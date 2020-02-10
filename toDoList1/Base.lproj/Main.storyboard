@@ -69,7 +69,7 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="101.78571428571428"/>
         </scene>
-        <!--Table View Controller-->
+        <!--nav-->
         <scene sceneID="Uib-P2-XTW">
             <objects>
                 <tableViewController id="mN0-IV-edE" sceneMemberID="viewController">
@@ -137,7 +137,7 @@
                             <outlet property="delegate" destination="mN0-IV-edE" id="nCA-ch-At0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="2sh-8r-MTg"/>
+                    <navigationItem key="navigationItem" title="nav" id="2sh-8r-MTg"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWm-nC-gAs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
