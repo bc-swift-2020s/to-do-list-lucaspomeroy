@@ -27,7 +27,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="mN0-IV-edE" kind="show" identifier="ShowDetail" id="2qd-p7-qru"/>
+                                            <segue destination="mN0-IV-edE" kind="show" identifier="ShowDetail" id="1hz-wI-sMV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -42,7 +42,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ufu-tH-Jyy"/>
+                    <navigationItem key="navigationItem" id="ufu-tH-Jyy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="IvZ-9N-br3">
+                            <connections>
+                                <segue destination="GMW-O4-gh9" kind="presentation" identifier="AddDetail" id="I9I-MJ-Zfg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="dqw-7w-o0B" id="pje-NC-uTi"/>
                     </connections>
@@ -72,7 +78,7 @@
         <!--nav-->
         <scene sceneID="Uib-P2-XTW">
             <objects>
-                <tableViewController id="mN0-IV-edE" sceneMemberID="viewController">
+                <tableViewController id="mN0-IV-edE" customClass="ToDoDetailTableViewController" customModule="toDoList1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="9Fe-Ij-732">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,11 +143,46 @@
                             <outlet property="delegate" destination="mN0-IV-edE" id="nCA-ch-At0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="nav" id="2sh-8r-MTg"/>
+                    <navigationItem key="navigationItem" title="nav" id="2sh-8r-MTg">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gWO-PH-z5U">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="mN0-IV-edE" id="Awi-9p-2Nr"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="HOg-gP-l60"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="datePicker" destination="uWB-y7-CA9" id="4yF-0B-0ex"/>
+                        <outlet property="nameField" destination="auA-Uv-gG1" id="hCe-ZN-0sJ"/>
+                        <outlet property="notesField" destination="CYx-15-XAs" id="EWy-XF-ehD"/>
+                        <outlet property="saveButton" destination="HOg-gP-l60" id="aYU-sq-Dd6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWm-nC-gAs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1863.7681159420292" y="101.78571428571428"/>
+            <point key="canvasLocation" x="2773.913043478261" y="101.78571428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="T5y-bL-Il5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GMW-O4-gh9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="A5j-XT-7Dz"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S4X-m1-5lI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mN0-IV-edE" kind="relationship" relationship="rootViewController" id="rGa-0S-VnP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qg4-9x-WtD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1923" y="-237"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="1hz-wI-sMV"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -19,6 +19,14 @@ class toDoListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetail"{
+            let destination = segue.destination as! ToDoDetailTableViewController
+            let selectedIndexPath = tableView.indexPathForSelectedRow!
+            destination.toDoItem = toDoArray[selectedIndexPath.row]
+        }
+    }
 
 
 }
