@@ -172,7 +172,7 @@
                     <connections>
                         <outlet property="datePicker" destination="uWB-y7-CA9" id="4yF-0B-0ex"/>
                         <outlet property="nameField" destination="Psh-3k-HTS" id="qFf-bL-ndJ"/>
-                        <outlet property="notesField" destination="CYx-15-XAs" id="EWy-XF-ehD"/>
+                        <outlet property="noteView" destination="CYx-15-XAs" id="EWy-XF-ehD"/>
                         <outlet property="saveButton" destination="HOg-gP-l60" id="aYU-sq-Dd6"/>
                     </connections>
                 </tableViewController>
