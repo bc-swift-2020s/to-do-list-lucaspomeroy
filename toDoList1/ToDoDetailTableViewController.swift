@@ -13,7 +13,8 @@ class ToDoDetailTableViewController: UITableViewController {
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var nameField: UITextView!
+   
+    @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var notesField: UITextView!
     
     var toDoItem: String!
@@ -21,10 +22,15 @@ class ToDoDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameField.text = toDoItem
         
-
-       
+        if toDoItem == nil{
+            toDoItem = ""
+        }
+        nameField.text = toDoItem
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        toDoItem = nameField.text
     }
 
 
