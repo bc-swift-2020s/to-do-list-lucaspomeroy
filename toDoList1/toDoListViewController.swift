@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class toDoListViewController: UIViewController {
     
@@ -23,6 +24,50 @@ class toDoListViewController: UIViewController {
         tableView.dataSource = self
         
         loadData()
+        authorizeLocaslNotifications()
+    }
+    
+    func authorizeLocaslNotifications(){
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error)
+            in
+            guard error == nil else{
+                print("Error \(error!.localizedDescription)")
+                return
+            }
+            if granted{
+                print("Notifications Granted!")
+            } else{
+                print("The user has denied notifications")
+            }
+        }
+    }
+    
+    func setCalendarNotifications(title: String, subtitle: String, body: String, badgeNumber: NSNumber?, sound: UNNotificationSound?, date: Date) -> String{
+        
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.subtitle = subtitle
+        content.body = body
+        content.sound = sound
+        content.badge = badgeNumber
+        
+        var dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        dateComponents.second = 00
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+        let notificationID = UUID().uuidString
+        let request = UNNotificationRequest(identifier: notificationID, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error{
+                print("ERROR: \(error.localizedDescription)")
+            }else{
+                print("Notification Scheduled \(notificationID), title: \(content.title)")
+            }
+        }
+        return notificationID
+        
+        
     }
     
     func loadData() {
@@ -50,6 +95,8 @@ class toDoListViewController: UIViewController {
         }catch{
             print("Error Saving Data \(error.localizedDescription)")
         }
+        let toDoItem = toDoItems.first!
+        let notificationID = setCalendarNotifications(title: toDoItem.name, subtitle: "Subtitle", body: toDoItem.notes, badgeNumber: nil, sound: .default, date: toDoItem.date)
          
     }
     
